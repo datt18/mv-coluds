@@ -1,0 +1,26 @@
+<!-- Component's .cmp file -->
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global"  >
+  <aura:attribute name="imageUrl" type="String" default="https://th.bing.com/th/id/OIP.IhHYeBw6gT4_5Sbmwy2uFQHaJQ?w=236;"/>
+  <aura:attribute name="bgColor" type="String" default="black"/>
+  <aura:attribute name="description" type="String" default="any"/>
+  <aura:attribute name="fontSize" type="String" default="15"/>
+  <aura:attribute name="fontColor" type="String" default="red"/>
+  
+  <lightning:layout>
+    <lightning:layoutItem size="6">
+      <lightning:input label="Image URL" value="{!v.imageUrl}" onchange="{!c.handleImageUrlChange}"></lightning:input>
+      <lightning:input label="Background Color" type="color" value="{!v.bgColor}" onchange="{!c.handleBgColorChange}"></lightning:input>
+      <lightning:input label="Description" value="{!v.description}" onchange="{!c.handleDescriptionChange}"></lightning:input>
+      <lightning:input label="Font Size" type="number" value="{!v.fontSize}" onchange="{!c.handleFontSizeChange}"></lightning:input>
+      <lightning:input label="Font Color" type="color" value="{!v.fontColor}" onchange="{!c.handleFontColorChange}"></lightning:input>
+    </lightning:layoutItem>
+    <lightning:layoutItem size="6">
+      <div class="slds-box" style="{!'background-color: ' + v.bgColor + ';' }">
+        <img src="{!v.imageUrl}" alt=""/>
+        <p style="{!'font-size: ' + v.fontSize + 'px; color: ' + v.fontColor + ';'}">
+          <lightning:formattedText value="{!v.description}"></lightning:formattedText>
+        </p>
+      </div>
+    </lightning:layoutItem>
+  </lightning:layout>
+</aura:component>

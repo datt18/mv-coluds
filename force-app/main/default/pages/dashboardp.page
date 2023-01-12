@@ -1,0 +1,43 @@
+<apex:page  controller="taskloginc">
+  <!-- <apex:form>
+
+    <apex:pageBlock>
+   
+      <apex:pageBlockTable value="{!con1}" var="a">
+        <apex:column value="{!a.id}"/>
+        <apex:column value="{!a.name}"/>
+      </apex:pageBlockTable>
+    </apex:pageBlock>
+   
+
+    <apex:pageBlock>
+      <apex:pageBlockTable value="{!con1}" var="o">
+        <apex:column value="{!o.Opportunities}"/>
+        <apex:column value="{!o.Id}"/>
+      </apex:pageBlockTable>
+    </apex:pageBlock> 
+   
+   
+  </apex:form>
+</apex:page> -->
+
+
+<apex:form>
+<apex:pageBlock title="Contacts List" id="contacts_list">
+<apex:pageBlockTable value="{! contacts }" var="ct">
+<apex:column value="{! ct.FirstName }"/>
+<apex:column value="{! ct.LastName }"/>
+<apex:column value="{! ct.Title }"/>
+<apex:column value="{! ct.Email }"/>
+</apex:pageBlockTable>
+</apex:pageBlock>
+<apex:pageBlock title="Opportunity List" id="opportunity_list">
+<apex:pageBlockTable value="{! Opportunities  }" var="ot">
+<apex:column value="{! ot.Name }"/>
+<apex:column value="{! ot.CloseDate }"/>
+<apex:column value="{! ot.StageName }"/>
+<apex:column value="{! ot.Amount }"/>
+</apex:pageBlockTable>
+</apex:pageBlock>
+</apex:form>
+</apex:page>

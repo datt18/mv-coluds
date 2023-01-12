@@ -1,0 +1,8 @@
+<apex:page >
+  <!-- Begin Default Content REMOVE THIS -->
+  <h1>silver oak university</h1>
+  This is a static resource  page ...
+  
+       <apex:image value="{!URLFOR($Resource.newone)}" width="300" height="80"/>
+
+</apex:page>

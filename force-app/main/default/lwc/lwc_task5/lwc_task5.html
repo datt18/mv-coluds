@@ -1,0 +1,89 @@
+<!-- 
+<template>
+   <lightning-input type="text" label="Search" onchange={handleSearchKeyChange} ></lightning-input>
+   <lightning-dual-listbox
+       label="Objects"
+       source-label="Available"
+       selected-label="Selected"
+       options={objectOptions}
+       onchange={handleObjectChange}
+   ></lightning-dual-listbox>
+   <lightning-button label="Search" onclick={handleSearchClick} ></lightning-button>
+
+<h3>
+   <template if:true={resultData} >
+      <table class="slds-table">
+         <thead>
+             <tr>
+                 <th>Name</th>
+                 <th>Id</th>
+             </tr>
+         </thead> 
+         <tbody>
+       <template for:each={resultData} for:item="objName" title="recods of ">
+           <p key={objName.key}>{objName.label}</p>
+         
+           <template for:each={objName.data} for:item="objData">
+
+            <tr key={objData}>
+
+
+              <td>{objData.Name}</td> 
+
+               <td>{objData.Id} </td> 
+              
+
+               </tr>
+           </template>
+         
+       </template>
+         </tbody>
+      </table>
+   </template>
+</h3>
+
+</template> -->
+
+
+<template>
+    <lightning-card title="Search Records" icon-name="standard:search">
+        <div class="slds-m-around_medium">
+            <lightning-input label="Search Bar" value={searchKey} onchange={handleSearchKeyChange}></lightning-input>
+            <lightning-dual-listbox
+                label="Objects"
+                source-label="Available"
+                selected-label="Selected"
+                options={objectsList}
+                value={selectedObjects}
+                onchange={handleSelectionChange}>
+            </lightning-dual-listbox>
+            <lightning-button label="Search" variant="brand" onclick={handleSearch}></lightning-button>
+        </div>
+        <div class="slds-m-around_medium">
+            <template if:true={records}>
+                <table class="slds-table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Id</th>
+                        </tr>
+                    </thead> 
+                    <tbody>
+                <template for:each={records} for:item="record">
+
+                    
+                    <tr key={record}>
+                        
+                        <td>{record.Name}</td> 
+          
+                         <td>{record.Id} </td> 
+                        
+                    </tr>
+                </template>
+            </tbody>
+        </table>
+            </template>
+        </div>
+    </lightning-card>
+</template>
+

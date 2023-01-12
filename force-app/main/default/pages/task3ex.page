@@ -1,0 +1,59 @@
+<apex:page standardController="Account" recordSetVar="ac" >
+    <apex:pageBlock title="Account and it's related Contacts">
+        <style>
+        .accordion {
+  /* background-color: #eee; */
+  color: rebeccapurple;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  text-align: left;
+  border: none;
+  outline: none;
+  transition: 0.7s;
+}
+
+.panel {
+  padding: 0 18px;
+  background-color: grey;
+  display: none;
+  overflow: hidden;
+}
+.active, .accordion:hover {
+  background-color: blue;
+}
+        </style>
+        
+                <apex:repeat value="{!ac}" var="acc">
+                    <button class="accordion">Account:<apex:outputText value="{!acc.Name}" /> </button>
+                    <div class="panel">
+                        <table border="1px solid black">
+                        <apex:repeat value="{!acc.Contacts}" var="cont"><tr>
+                               <td> <apex:outputText value="{!cont.Name}" /></td>
+                                
+                               <td> no email <apex:outputText value="{!cont.Email}" /> </td>
+                            </tr>
+                            </apex:repeat> <br/>
+                    </table>
+                    </div>
+                            
+                </apex:repeat> 
+    
+    </apex:pageBlock>
+    <script>
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "block";
+    }
+  });
+}
+</script>
+</apex:page>

@@ -1,0 +1,7 @@
+<apex:page >
+  <!-- Begin Default Content REMOVE THIS -->
+  <h1>Congratulations</h1>
+  new static resources page
+  <!-- End Default Content REMOVE THIS -->
+  <!-- <apex:image value="{!URLFOR($Resource.)}" width="300" height="40"/>-->
+</apex:page>

@@ -1,0 +1,5 @@
+<!-- <apex:page standardController="opportunity" extensions="future_task1" action="{!caseEscalation}">
+<apex:form>
+<apex:inputHidden value="{!case.OwnerId}"/>
+</apex:form>
+</apex:page> -->

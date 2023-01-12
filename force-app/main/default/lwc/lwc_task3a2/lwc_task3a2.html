@@ -1,0 +1,63 @@
+<!-- <template>
+    
+    <div class="slds-m-around_medium">
+        <h3>contact list:</h3>
+   
+    <template for:each ={con} for:item="item">
+
+    <p  key={item.Id} value={item.LastName}>{item.LastName}</p>
+    </template>
+
+    </div>
+    <br>
+    <br>
+    <div class="slds-m-around_medium">
+        <h3>Opportunity list: </h3>
+  
+    <template for:each ={opp} for:item="item">
+   
+    <p key={item.Id} value={item.Name}>{item.Name}</p>
+    </template>
+    </div>
+
+
+</template> -->
+
+
+<template>
+    <template if:true={showCnt}>
+    <lightning-card title='List Of Contacts'>
+        <template for:each={newCntList} for:item="cnt">
+            <div key={cnt.Id} class="slds-box">
+                <div class="slds-grid slds-wrap">
+                    <p class="slds-page-header__title slds-m-right--small slds-align-middle slds-truncate">{cnt.LastName}</p>
+                </div><br/>
+                <div class="slds-grid slds-wrap">
+                    <strong>First Name - </strong><p>{cnt.FirstName}</p>
+                </div>
+                <div class="slds-grid slds-wrap">
+                    <strong>Email - </strong><p>{cnt.Email}</p>
+                </div>
+            </div>
+        </template>
+    </lightning-card>
+</template>
+
+    <template if:true={showOpp}>
+    <lightning-card title='List Of Opportunities'>
+        <template for:each={newOppList} for:item="opp">
+            <div key={opp.Id} class="slds-box">
+                <div class="slds-grid slds-wrap">
+                    <p class="slds-page-header__title slds-m-right--small slds-align-middle slds-truncate">{opp.Name}</p>
+                </div><br/>
+                <div class="slds-grid slds-wrap">
+                    <strong>Close Date - </strong><p>{opp.CloseDate}</p>
+                </div>
+                <div class="slds-grid slds-wrap">
+                    <strong>Stage Name - </strong><p>{opp.StageName}</p>
+                </div>
+            </div>
+        </template>
+    </lightning-card>
+</template>
+</template>

@@ -1,0 +1,21 @@
+<apex:page controller="forcec">
+    <apex:form>
+        <!-- <apex:commandButton action="{!task12}" value="task12" /> -->
+        <apex:commandButton action="{!task21}" value="task22" />
+        <apex:commandButton action="{!task3}" value="task3c" />
+        <apex:commandButton action="{!task3exc}" value="task3ex" />
+        <apex:commandButton action="{!task3newc}" value="task3new" />
+        <!-- <apex:commandButton action="{!task4}" value="task4" /> -->
+        <apex:commandButton action="{!task5finalc}" value="taskfinal" />
+        <apex:commandButton action="{!taskloginc}" value="taskloginp" />
+        <apex:commandButton action="{!taskregc}" value="taskregp" />
+
+        
+
+       
+
+
+
+    </apex:form>
+
+</apex:page>

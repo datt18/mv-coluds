@@ -1,0 +1,58 @@
+<apex:page standardController="Account" extensions="taskregc">
+
+
+
+    <apex:form>
+        <style>
+            .main{
+                background-color: blueviolet;   
+                width: 400px;
+                height: 250px;
+                align-items: center;
+                margin-left: 400px;
+                margin-top: 100px;
+                
+        
+            }
+            .title{
+                color: blue;
+                text-align: center; 
+            }
+            
+            
+        
+        </style>
+        <div class="main"> 
+        <apex:pageBlock title="registration page" id="con" >
+            <apex:pageBlockSection columns="1">
+
+
+                <apex:inputText label="username" value="{!Account.Name}" />
+
+
+      <apex:inputText label="Email" value="{!Account.acc_Email__c}" required="true" />
+                <apex:inputText label="password" value="{!Account.password__c}" required="true" />
+                <apex:inputText label="Phone" value="{!Account.Phone}" />
+
+            </apex:pageBlockSection>
+            <apex:pageBlockButtons location="bottom">
+                <apex:commandButton value="Create Account" action="{!save}" />
+                <!-- <apex:commandButton value="login" action="{!printView}"  /> -->
+
+                <!-- <apex:commandButton value="login" action="{!goToPageTwo}"/> -->
+                <!-- <button id="#log">login</button> -->
+
+            </apex:pageBlockButtons>
+            <!-- <script>
+                document.querySelecter('#log')
+                .addEventListener('click', () => {
+                    window.location.href ='https://mvclouds65-dev-ed--c.develop.vf.force.com/apex/taskloginp';
+                });
+            </script> -->
+
+        </apex:pageBlock>
+    </div>
+
+    </apex:form>
+
+</apex:page>

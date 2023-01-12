@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningMessageChannel xmlns="http://soap.sforce.com/2006/04/metadata">
+    <masterLabel>FirstMessChannel</masterLabel>
+    <isExposed>true</isExposed>
+    <description>This Lightning Message Channel sends information between two lwc component</description>
+ 
+    <!-- <lightningMessageFields>
+        <fieldName>a_Variable1</fieldName>
+        <description>Variable 1 Description - optional</description>
+    </lightningMessageFields> -->
+ 
+    <lightningMessageFields>
+        <fieldName>selectedAccId</fieldName>
+        <description>Account Id which was selected</description>
+    </lightningMessageFields>
+ 
+</LightningMessageChannel>

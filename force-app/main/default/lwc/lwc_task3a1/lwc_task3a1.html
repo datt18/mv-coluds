@@ -1,0 +1,74 @@
+<!-- <template>
+    
+    <lightning-card title="Choose Account Name" icon-name="standard:account">
+    
+    <div class="slds-m-around_medium">
+    <select class="slds-select" onchange={handleClick}>
+    <option>Select Account</option>
+    <template for:each ={acc} for:item="item">
+    <option key={item.Id} value={item.Id} >{item.Name}</option>
+    </template>
+    </select>
+    </div>
+    
+    </lightning-card>
+</template>
+    -->
+
+
+    <template>
+        <!-- <lightning-card title="List Of Accounts">
+            <template for:each={listOfAcc} for:item="acc">
+                <div key={acc.value} class="slds-box">
+                    <div class="slds-grid slds-wrap">
+                        <a data-id={acc.value} onclick={demo}>{acc.name}</a>
+                    </div>
+                </div>
+            </template>
+        </lightning-card> -->
+      
+        <div>
+            <div class="slds-select_container">
+               <select class="slds-select" onchange={demo}>
+                  <option value="">Select</option>
+                  <template for:each ={listOfAcc} for:item="acc">
+                     <option key={acc.value} value={acc.value}>{acc.name}</option>
+                  </template>
+               </select>
+            </div>
+         </div>
+      
+        <!-- <div class="slds-form-element">
+            <label class="slds-form-element__label" for="combobox-id-1" id="combobox-label-id-27">Relate To</label>
+            <div class="slds-form-element__control">
+              <div class="slds-combobox_container slds-size_small">
+                <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click" onselect={demo}>
+                  <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none">
+                    <button type="button" class="slds-input_faux slds-combobox__input" aria-labelledby="combobox-label-id-27 combobox-id-1-selected-value" id="combobox-id-1-selected-value" aria-controls="listbox-id-1" aria-expanded="false" aria-haspopup="listbox">
+                      <span class="slds-truncate" id="combobox-value-id-31">Select an Option…</span>
+                    </button>
+                    <span class="slds-icon_container slds-icon-utility-down slds-input_icon slds-input_icon_right">
+                      <svg class="slds-icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
+                        <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#down"></use>
+                      </svg>
+                    </span>
+                  </div>
+                  <div class="slds-dropdown slds-dropdown_fluid" role="listbox">
+                      <ul class="slds-listbox slds-listbox_vertical" role="presentation">
+                          <template for:each={listOfAcc} for:item="acc">
+                            <li key={acc.value} role="presentation" class="slds-listbox__item">
+                        <div class="slds-media slds-listbox_option slds-listbox_option_plain slds-media_small" role="option" >
+                          <span class="slds-media_figure slds-listbox_option-icon"></span>
+                          <span class="slds-media__body">
+                            <span data-id={acc.value} class="slds-truncate" title={acc.name}>{acc.name}</span>
+                          </span>
+                        </div>
+                    </li>
+                </template>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div> -->
+      </template>

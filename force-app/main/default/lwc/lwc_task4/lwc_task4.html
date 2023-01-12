@@ -1,0 +1,407 @@
+<!-- 
+
+<template>
+    <lightning-card title="Create LWC Wizard">
+      <div class="slds-grid">
+        <div class="slds-col slds-size_1-of-2">
+          <div class="slds-section">
+            <h3 class="slds-section__title">Select Object</h3>
+            <div class="slds-p-around_medium">
+              <lightning-combobox
+                name="object-select"
+                label="Object"
+                placeholder="Select an Object"
+                disabled={disableObjectSelect}
+                options={objectOptions}
+                value={selectedObject}
+                onchange={handleObjectChange}
+              ></lightning-combobox>
+            </div>
+            <h3 class="slds-section__title">{selectedObject} </h3>
+            <div class="slds-p-around_medium">
+              <template if:true={showRecords}>
+                <template for:each={records} for:item="record">
+                  
+                    <lightning-input  type="checkbox" label={record.Name} key={record.Id} value={record.Id} onchange={handleRecordSelection}>
+
+                    </lightning-input>
+                  
+                </template>
+              </template>
+            </div>
+          </div>
+          <div class="slds-section" if:true={showEmailSection}>
+            <h3 class="slds-section__title">Draft an Email</h3>
+            <div class="slds-p-around_medium">
+              <lightning-input
+                name="email-subject"
+                label="Subject"
+                placeholder="Enter subject"
+			     onchange={handleSubjectChange}
+          
+              >
+
+            </lightning-input>
+              <lightning-textarea
+                name="email-body"
+                label="Email Body"
+				onchange={handleMessageChange}
+                placeholder="Enter email body"
+              ></lightning-textarea>
+            </div>
+          </div>
+          
+          <div class="slds-section" if:true={showEmailPreview}>
+            <h3 class="slds-section__title">Email Preview</h3>
+            <div class="slds-p-around_medium">
+             
+              <p>email:{selectedId} </p>
+              <p>Subject: {emailSubject}</p>
+              <p>Body: {emailBody}</p>
+
+            </div>
+          </div>
+          <div class="slds-p-around_medium">
+            <template if:true={showSendButton}>
+                <lightning-button label="Send" variant="brand" onclick={handleSend}></lightning-button>
+              </template>
+              <template if:true={showNextButton}>
+                <lightning-button label="Next" variant="brand" onclick={handleNext}></lightning-button>
+              </template>
+            <template if:true={showPreviousButton}>
+              <lightning-button label="Previous" variant="brand" onclick={handlePrevious}></lightning-button>
+            </template>
+           
+            
+            
+          </div>
+        </div>
+      </div>
+    </lightning-card>
+  </template>
+  
+   -->
+
+   <template>
+   
+<!--     
+  <div style="margin: 0px 20vw;" id="main" class="slds-grid slds-grid--vertical adapetr-config-main">
+    <div  class="slds-page-header adapetr-header" style="border: 2px solid black;margin-bottom: 2px;">
+        <div class="slds-media">
+            <div class="slds-media__body">
+
+                <template if:true={first}>
+                    <h1 class="slds-text-title--caps slds-line-height--reset">Salesforce Wizard 1 of 3</h1>
+                        <p class="slds-page-header__title slds-m-right--small slds-align-middle slds-truncate">Object Record Selection</p>
+                </template>
+
+                <template if:true={second}>
+                    <h1 class="slds-text-titlecaps slds-line-heightreset">Salesforce Wizard 2 of 3</h1>
+                        <p class="slds-page-header__title slds-m-rightsmall slds-align-middle slds-truncate">Draft An Email</p>
+                </template>
+
+                <template if:true={third}>
+                    <h1 class="slds-text-title--caps slds-line-height--reset">Salesforce Wizard 3 of 3</h1>
+                        <p class="slds-page-header__title slds-m-right--small slds-align-middle slds-truncate">Email Previous & Send</p>
+                </template>
+                
+                <template if:true={four}>
+                        <h1 class="slds-text-title--caps slds-line-height--reset" >Salesforce Wizard 4</h1>
+                        <p class="slds-page-header__title slds-m-right--small slds-align-middle slds-truncate">Congractulation</p>
+                </template>
+
+                <template if:true={showMessage}>
+                    <p style="text-align:center; font-weight:700; margin-top:15px">{message}</p>
+                </template>
+
+
+            </div>
+        </div>
+    </div> -->
+
+    <!-- <div>
+        <lightning:progressBar value="{!v.progress}"></lightning:progressBar>
+        <span class="slds-text-title--caps slds-line-height--reset">Progress: {progress}%</span>
+    </div> -->
+    
+  <div style="margin: 0px 20vw;" id="main" class="slds-grid slds-grid--vertical adapetr-config-main">
+    <div  class="slds-page-header adapetr-header" style="border: 2px solid black;margin-bottom: 2px;">
+        <div class="slds-media">
+            <div class="slds-media__body">
+
+                <template if:true={first}>
+                    <h1 class="slds-text-title--caps slds-line-height--reset">Salesforce Wizard 1 of 3</h1>
+                        <p class="slds-page-header__title slds-m-right--small slds-align-middle slds-truncate">Object Record Selection</p>
+                </template>
+
+                <template if:true={second}>
+                    <h1 class="slds-text-title--caps slds-line-height--reset">Salesforce Wizard 2 of 3</h1>
+                        <p class="slds-page-header__title slds-m-right--small slds-align-middle slds-truncate">Draft An Email</p>
+                </template>
+
+                <template if:true={third}>
+                    <h1 class="slds-text-title--caps slds-line-height--reset">Salesforce Wizard 3 of 3</h1>
+                        <p class="slds-page-header__title slds-m-right--small slds-align-middle slds-truncate">Email Previous & Send</p>
+                </template>
+                
+                <template if:true={four}>
+                        <h1 class="slds-text-title--caps slds-line-height--reset" >Salesforce Wizard 4</h1>
+                        <p class="slds-page-header__title slds-m-right--small slds-align-middle slds-truncate">Congractulation</p>
+                </template>
+
+                <template if:true={showMessage}>
+                    <p style="text-align:center; font-weight:700; margin-top:15px">{message}</p>
+                </template>
+
+
+                <!-- <div id="showErrorrTractConfig" class="cmn_error_msg " style="display:none; text-align:center;font-weight:700">
+                    <strong>{message}</strong>
+                </div>
+                <div id="showMessageTractConfig" class="cmn_message " style="display:none;text-align:center;font-weight:700">
+                    <strong>{message}</strong>
+                </div> -->
+            </div>
+        </div>
+    </div>
+
+    <div class="adapetr-config-sec" style="border: 2px solid black ;background-color: rgb(216,216,216)">
+        <template if:false={four}>
+            <h3 data-id="star" class="slds-text-heading--small slds-align_absolute-center" style="padding: 10px;">Please provide the following information. All the fields marked with <span class="cmn_mandatory_indicator"> * </span> are required.</h3>
+        </template>
+        <div style="padding: 0px 30px; max-width:50vw" class=" slds-align--absolute-center config-table-details">
+            <table style="background-color: rgb(216, 216, 216)"  class="slds-table">
+                <template if:true={first}>
+                    <tr>
+                        <td>
+                            <div class="topSpacing">
+                                <label class="slds-form-element__label">Select Object<span class="cmn_mandatory_indicator">*</span></label>
+                            </div>
+                            <div class="width">
+                                <select class="slds-select" onchange={demo}>
+                                    <option value="">Select</option>
+                                    <option value="Lead">Lead</option>
+                                    <option value="Account">Account</option>
+                                    <option value="Contact">Contact</option>
+                                 </select>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <template if:true={showLead}>
+                                <lightning-card title="List Of Leads">
+                                    <div style="overflow-x: hidden; overflow-y: auto; text-align:justify; height:300px">
+                                    <template for:each={leadlist} for:item="lead">
+                                        <div key={lead.Id} class="slds-box parent">
+                                            <div class="child">
+                                            <span>
+                                                <input type="checkbox" data-id={lead.Id} onchange={check} style=" width: 18px; height:16px"></input>
+                                            </span>
+                                        </div>
+                                        <div class="child">
+                                            <span style="font-weight: 500; color:mediumblue">{lead.Name}</span>
+                                            <template if:true={lead.Email}>
+                                            <p>Email - {lead.Email}</p>
+                                        </template>
+                                    </div>
+                                        </div>
+                                    </template>
+                                </div>
+                                </lightning-card>
+                            </template>
+                            <template if:true={showAcc}>
+                                <lightning-card title="List Of Accounts">
+                                    <div style="overflow-x: hidden; overflow-y: auto; text-align:justify; height:300px">
+                                    <template for:each={acclist} for:item="acc">
+                                        <div key={acc.Id} class="slds-box parent">
+                                            <div class="child">
+                                            <span>
+                                                <input type="checkbox" data-id={acc.Id} onchange={check} style=" width: 18px; height:16px"></input>
+                                            </span>
+                                        </div>
+                                        <div class="child">
+                                            <span style="font-weight: 500; color:mediumblue">{acc.Name}</span>
+                                            <template if:true={acc.Email__c}>
+                                            <p>Email - {acc.Email__c}</p>
+                                        </template>
+                                    </div>
+                                        </div>
+                                    </template>
+                                </div>
+                                </lightning-card>
+                            </template>
+                            <template if:true={showCnt}>
+                                <lightning-card title="List Of Contacts">
+                                    <div style="overflow-x: hidden; overflow-y: auto; text-align:justify; height:300px">
+                                    <template for:each={cntlist} for:item="cnt">
+                                        <div key={cnt.Id} class="slds-box parent">
+                                            <div class="child">
+                                            <span>
+                                                <input type="checkbox" data-id={cnt.Id} onchange={check} style=" width: 18px; height:16px"></input>
+                                            </span>
+                                        </div>
+                                        <div class="child">
+                                            <span style="font-weight: 500; color:mediumblue">{cnt.FirstName} {cnt.LastName}</span>
+                                            <template if:true={cnt.Email}>
+                                            <p>Email - {cnt.Email}</p>
+                                        </template>
+                                    </div>
+                                        </div>
+                                    </template>
+                                </div>
+                                </lightning-card>
+                            </template>
+                        </td>
+                    </tr>
+                </template>
+
+                <template if:true={second}>
+                    <tr>
+                        <td>
+                            <div class="width">  
+                                <lightning-input type="text" label="From" value="pateldatt81@gmail.com" disabled></lightning-input>
+                            </div>
+                        </td>
+                    </tr>
+                    <!-- <tr>
+                        <td>
+                            <div class="width">  
+                                <lightning-input type="text" placeholder="custome reciever name..." label="Reciever Name" value={name} onfocusout={custname}></lightning-input>
+                            </div>
+                        </td>
+                    </tr> -->
+                    <tr>
+                        <td>
+                            <div class="width">  
+                                <lightning-input type="text" placeholder="subject..." label="Subject For Email" onfocusout={subject} value={sub}></lightning-input>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <!-- <div class="width"> -->
+                                <lightning-card>
+                                    <lightning-input-rich-text
+                                    type="text" placeholder="text email body here..."  
+                                   value={names}
+                                            onfocusout={body}>
+                                        <lightning-rich-text-toolbar-button-group
+                                           >
+                                            <lightning-rich-text-toolbar-button
+                                            value={emailBody}
+                                                >
+                                                
+                                                </lightning-textarea>
+                                            </lightning-rich-text-toolbar-button>
+                                            <lightning-rich-text-toolbar-button
+                                          
+                                            >
+                                        
+                                            
+                                            </lightning-rich-text-toolbar-button>
+                                        </lightning-rich-text-toolbar-button-group>
+                                    </lightning-input-rich-text>
+                                </lightning-card>
+
+                                <!-- <lightning-helptext style="position: absolute; left:78px; top:5px" content="Please don't write receiver name in email body if you already fill the reciever name field"></lightning-helptext>
+                                <lightning-textarea type="text" placeholder="text email body here..." label="Email Body" value={emailBody}
+                                onfocusout={body} min-length="10" required>
+                            </lightning-textarea> -->
+                            <!-- </div> -->
+                        </td>
+                    </tr>
+                </template>
+
+                <template if:true={third}>
+                    <tr>
+                        <td>
+                            <div>  
+                                <div class="topSpacing">
+                                    <label class="slds-text-heading_small slds-text-font_monospace slds-text-title_caps"><b>From</b></label>
+                                </div> 
+                                <div class="data">
+                                    <p>pateldatt81@gmail.com</p>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div>  
+                                <div class="topSpacing">
+                                    <label class="slds-text-heading_small slds-text-font_monospace slds-text-title_caps"><b>To</b></label>
+                                </div> 
+                                <div class="data">
+                                    <template for:each={emails} for:item='mail'>
+                                        <p key={mail}>{mail}</p>
+                                    </template>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div>  
+                                <div class="topSpacing">
+                                    <label class="slds-text-heading_small slds-text-font_monospace slds-text-title_caps"><b>Subject</b></label>
+                                </div> 
+                                <div class="data">
+                                    <p >{sub}</p>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <!-- <div>  
+                                <div class="topSpacing">
+                                    <label class="slds-text-heading_small slds-text-font_monospace slds-text-title_caps"><b>Reciever Name</b></label>
+                                </div> 
+                                <div class="data">
+                                    <p >{name}</p>
+                                </div>
+                            </div> -->
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div>  
+                                <div class="topSpacing">
+                                    <label class="slds-text-heading_small slds-text-font_monospace slds-text-title_caps"><b>Email Body</b></label>
+                                </div> 
+                                <!-- <div > -->
+                                    <pre style="margin-top: 0px; font-size:16px; font: weight 550; font-family: system-ui;" class="data">{emailBody}</pre>
+                                <!-- </div> -->
+                            </div>
+                        </td>
+                    </tr>
+                </template>
+                <template if:true={four}>
+                        <div style="text-align: center;">
+                            <p style="font-size: 50px; font-weight:700; color:currentcolor;">Thank You</p>
+                            <p style="font-size: 40px; font-weight:500; color:cadetblue">For Your Submission...</p>
+                        </div>
+                </template>
+            </table>
+        </div>
+
+        <div class="slds-grid  slds-grid--align-center btndiv">
+            <template if:true={first}>
+                <button class="slds-button slds-button--brand" onclick={next}>Next</button>
+            </template>
+            
+            <template if:true={second}>
+                <button class="slds-button slds-button--brand" onclick={previous} >Back</button>
+                <button class="slds-button slds-button--brand" onclick={next} >Next</button>
+            </template>
+            
+            <template if:true={third}>        
+                <button class="slds-button slds-button--brand" onclick={previous} >Back</button> 
+                <button class="slds-button slds-button--brand" onclick={send} >Send</button>
+            </template>
+        </div>
+    </div>
+
+  </div>
+</template>
+

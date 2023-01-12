@@ -1,0 +1,98 @@
+<apex:page  controller="taskloginc">
+    <apex:form>
+        <style>
+            .main1{
+                background-color: blueviolet;   
+                width: 400px;
+                height: 276px;
+                align-items: center;
+                margin-left: 400px;
+                margin-top: 100px;
+                
+            }
+        </style>
+        <div class="main1">
+        <apex:pageBlock title="login page">
+            <apex:pageBlockButtons location="bottom">
+                <apex:commandButton value="login" action="{!searchre}" reRender="contact-table"  />
+            </apex:pageBlockButtons>
+
+            <apex:pageBlockButtons location="bottom">
+                <apex:commandButton value="registration" action="{!goToPageTwo}" reRender="contact-table"  />
+            </apex:pageBlockButtons>
+
+            <apex:pageBlockSection id="contact-table" columns="1">
+                <apex:pageBlockSectionItem>
+                    <apex:outputLabel value="username" />
+                    <apex:inputText value="{!name}" rendered="true" id="user" />
+                </apex:pageBlockSectionItem>
+
+                <apex:pageBlockSectionItem>
+                    <apex:outputLabel value="password" />
+                    <apex:inputText value="{!password}" rendered="true" id="pass"  />
+                </apex:pageBlockSectionItem>
+
+                <!-- <table>
+                    <apex:repeat value="{!con1}" var="con">
+                      <tr>
+                        <td><apex:outputText value="{!con.name}"/></td>
+                        <apex:repeat value="{!Contacts}" var="cont">
+                           <td><apex:outputText value="{!cont.Name}"/></td>
+                        </apex:repeat>
+                      </tr>
+                    </apex:repeat>
+                  </table> -->
+
+                
+
+             <!-- <apex:pageBlockTable value="{!Contacts}" var="c">
+                    <apex:column id="f">
+                        <apex:facet name="header">username
+
+                        </apex:facet>
+                        {!c.Name}
+                    </apex:column>
+
+                    <apex:column id="s">
+                        <apex:facet name="header">password
+
+                        </apex:facet>
+                        {!c.password__c}
+                    </apex:column>
+                </apex:pageBlockTable> -->
+
+
+                
+                 <!-- <script>
+                     
+                       function op() {
+                       
+
+                        var f1 = document.getElementById("pass").value;
+                        var f2 = document.getElementById("user").value;
+                        // var ff = document.getElementById("f").value;
+                        // var fs = document.getElementById("s").value;
+                        
+                        if (f2 == 'datt' ) {
+                            alert('hello');
+                            
+                            window.location = "https://mvclouds65-dev-ed.develop.lightning.force.com/lightning/setup/ApexPages/home";
+                    }
+
+                        else {
+                            alert("invaild information")
+                        }
+                    }
+
+                </script>  -->
+
+
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </div>
+    </apex:form>
+
+
+
+
+</apex:page>
