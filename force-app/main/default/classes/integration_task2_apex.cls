@@ -187,7 +187,7 @@ public with sharing class integration_task2_apex {
             String boundary = '----------9889464542212';
             String bodyEncoded = EncodingUtil.base64Encode(file);
             Blob bodyEncoded2 = EncodingUtil.base64Decode(bodyEncoded);
-            String body = '{ "path": "/Homework/math/1.jpg", "mode": "add", "autorename": true, "mute": false, "strict_conflict": false }';
+            String body = '{ "path": "/home/Test/1.jpg", "mode": "add", "autorename": true, "mute": false, "strict_conflict": false }';
             Http http = new Http();
             HttpRequest req = new HttpRequest();
             String endpoint = 'https://content.dropboxapi.com/2/files/upload';
@@ -216,6 +216,7 @@ public with sharing class integration_task2_apex {
         catch(Exception e) {
             isError = true;
             System.debug(e);
+            System.debug(e.getLineNumber());
             errorMessage = 'Files couldn\'t be uploaded to Dropbox.';
         }
     }
