@@ -10,19 +10,18 @@
 //     }
 // }
 
-
 trigger task9 on Contact (after delete) {
+
+    // Get Ids of related Accounts
     Set<Id> accountIds = new Set<Id>();
-    
-    for(Contact con : Trigger.old)
-    {
-        accountIds.add(con.AccountId);
+    for(Contact c : Trigger.old) {
+        accountIds.add(c.AccountId);
     }
-    
+
+    // Delete related Accounts
     List<Account> accountsToDelete = [SELECT Id FROM Account WHERE Id IN :accountIds];
-    
-    if(accountsToDelete.size() > 0)
-    {
+    if(accountsToDelete.size() > 0) {
         delete accountsToDelete;
     }
+
 }

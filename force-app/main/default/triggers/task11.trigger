@@ -6,8 +6,8 @@ trigger task11 on Account (after update) {
         if(accafter.Rating.equals('Hot')){
             System.debug('1234');
             AccountShare a = new AccountShare();
-            // user name datt11 in my addmin section 
-            a.UserOrGroupID = '0015g00000ztnKtAAI';
+            // user name aura in my addmin section 
+            a.UserOrGroupID = '0015g000016CaV7AAK';
             a.AccountId = accafter.Id;
             a.AccountaccessLevel = 'Edit';
             a.OpportunityAccessLevel = 'Read';

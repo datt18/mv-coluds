@@ -17,15 +17,18 @@
 //     }
 //   }
 
+trigger task12 on Account (after insert) { 
+    List<Contact> contactList = new List<Contact>(); 
 
+    for(Account a : Trigger.new) { 
+        Contact c = new Contact(); 
+        c.FirstName = a.Name; 
+        c.LastName = a.Name;
+        c.AccountId = a.Id; 
+        contactList.add(c); 
+    } 
 
-trigger task12 on Account (after insert) {
-    List<Contact> contactsToInsert = new List<Contact>(); 
-    for(Account acc : Trigger.new){
-        Contact con = new Contact(FirstName=acc.Name, AccountId = acc.Id);
-        contactsToInsert.add(con);
-    }
-    if(contactsToInsert.size() > 0){
-        insert contactsToInsert;
-    }
+    if(contactList.size() > 0) { 
+        insert contactList; 
+    } 
 }

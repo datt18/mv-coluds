@@ -1,17 +1,26 @@
+
 @isTest
-public class test_trigger_task71 {
-    static testMethod void testOpportunityNameChangeTrigger() {
-        Opportunity opp = new Opportunity();
-        opp.Name = 'Test Opportunity';
-        opp.StageName = 'Prospecting';
-        insert opp;
+private class test_trigger_task71 {
+    static testmethod void testOpportunityNameModify(){
+        //Create Opportunity
+        Opportunity o = new Opportunity();
+        
 
-        // Change the Opportunity Name
-        opp.Name = 'Updated Opportunity Name';
-        update opp;
+        //Retrieve Opportunity
+        List<Opportunity> oppList = [SELECT Id, Name from Opportunity WHERE Id = :o.Id];
 
-        // Verify a task has been created
-        List<Task> tasks = [SELECT Id FROM Task];
-        System.assertEquals(1, tasks.size());
+        System.assertEquals(1, oppList.size());
+
+        //Update Opportunity
+        oppList[0].Name = 'TestOppNameModified';
+        update oppList;
+
+        //Retrieve Task
+        List<Task> tasksList = [SELECT Id, WhatId, Subject, Description FROM Task WHERE WhatId = :oppList[0].Id];
+
+        System.assertEquals(1, tasksList.size());
+        System.assertEquals(oppList[0].Id, tasksList[0].WhatId);
+        System.assertEquals('Opportunity Name Modified', tasksList[0].Subject);
+        System.assertEquals('Opportunity Name has been modified', tasksList[0].Description);
     }
 }

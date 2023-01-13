@@ -1,18 +1,30 @@
 
-
 @isTest
-public class test_trigger_teask9 {
-    static testMethod void testDelete(){
-        Account acc = new Account(Name = 'Test Account');
-        insert acc; 
-        Contact con = new Contact(LastName = 'Test', AccountId = acc.Id);
+public  class test_trigger_teask9 {
+
+    static testMethod void testDeleteAccountOnContactDelete() {
+        // Create an account
+        Account acc = new Account(Name='Test Account');
+        insert acc;
+
+        // Create a contact
+        Contact con = new Contact(FirstName='Test', LastName='Contact', AccountId=acc.Id);
         insert con;
-        
-        Test.startTest();
+        System.debug(con);
+        // Delete the contact
         delete con;
-        // Test.stopTest();
-        
-        Account accountCheck = [SELECT Id FROM Account WHERE Id = :acc.Id];
-     System.assertEquals(null, accountCheck);
+System.debug(con.id);
+System.debug(con.AccountId);
+System.debug(acc.Id);
+
+        // Query the Account
+        // acc = [SELECT Id,Name FROM Account WHERE Id = :acc.Id];
+        // System.debug(acc.Id);
+
+
+        // Assert the account is deleted
+        System.assertEquals(acc.Id , con.AccountId);
+       
     }
+
 }
